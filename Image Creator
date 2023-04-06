@@ -1,0 +1,58 @@
+# Import the necessary libraries
+import random
+
+# Define a function to print an image
+def print_image(image):
+    for row in image:
+        print(''.join(row))
+
+# Define a function to create a random image of size nxn
+def create_image(n):
+    # Create an empty image
+    image = []
+
+    # Generate n rows
+    for row in range(n):
+        # Create an empty row
+        row_list = []
+        # Generate n columns
+        for col in range(n):
+            # Add a random asterisk to the row
+            row_list.append('*')
+        # Append the row to the image
+        image.append(row_list)
+    return image
+
+
+# Define a function to create a random image of size nxn with a given probability
+def create_image_prob(n, p):
+    # Create an empty image
+    image = []
+
+    # Generate n rows
+    for row in range(n):
+        # Create an empty row
+        row_list = []
+        # Generate n columns
+        for col in range(n):
+            # Generate a random number
+            r = random.random()
+            # Add an asterisk to the row if the random number is less than the given probability
+            if r < p:
+                row_list.append('*')
+            else:
+                row_list.append(' ')
+        # Append the row to the image
+        image.append(row_list)
+    return image
+
+# Test the functions
+# Generate a 10x10 random image
+image = create_image(10)
+# Print the image
+print_image(image)
+
+# Generate a 10x10 random image with probability 0.5
+image = create_image_prob(10, 0.5)
+# Print the image
+print_image(image)
